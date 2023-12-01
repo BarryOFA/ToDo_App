@@ -5,3 +5,24 @@ Content-Type: application/json
     "title": "Titulo 1",
     "description": "Descripcion 1"
 }
+
+###
+
+PUT http://localhost:3000/todo/65696092fd90238ba1511e2f HTTP/1.1
+Content-Type: application/json
+
+{
+    "status": "IN_PROGRESS"
+}
+
+###
+
+GET http://localhost:3000/todo HTTP/1.1
+
+###
+
+GET http://localhost:3000/todo/65696092fd90238ba1511e2f HTTP/1.1
+
+###
+
+
