@@ -2,7 +2,7 @@ POST http://localhost:3000/todo HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Titulo 1",
+    "title": "Mongito",
     "description": "Descripcion 1"
 }
 
@@ -25,4 +25,7 @@ GET http://localhost:3000/todo/65696092fd90238ba1511e2f HTTP/1.1
 
 ###
 
+DELETE http://localhost:3000/todo/65696092fd90238ba1511e2f HTTP/1.1
 
+
+###
