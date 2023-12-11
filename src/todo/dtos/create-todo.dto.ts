@@ -1,17 +1,17 @@
-import { IsNotEmpty, IsString, IsEnum, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsString, IsEnum, IsOptional } from 'class-validator'
 
-import { TodoStatus } from '../schemas/todo.schemas';
+import { TodoStatus } from '../schemas/todo.schemas'
 
 export class CreateTodoDto {
   @IsNotEmpty()
   @IsString()
-  title: string;
+  title: string
 
   @IsString()
   @IsOptional()
-  description?: string;
+  description?: string
 
   @IsEnum(TodoStatus)
   @IsOptional()
-  status?: TodoStatus;
+  status?: TodoStatus
 }

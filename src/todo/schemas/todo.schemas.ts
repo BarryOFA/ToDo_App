@@ -1,4 +1,4 @@
-import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose'
 
 export enum TodoStatus {
   PENDING = 'PENDING',
@@ -9,13 +9,13 @@ export enum TodoStatus {
 @Schema()
 export class Todo {
   @Prop({ required: true })
-  title: string;
+  title: string
 
   @Prop()
-  description: string;
+  description: string
 
   @Prop({ default: TodoStatus.PENDING })
-  status: TodoStatus;
+  status: TodoStatus
 }
 
-export const TodoSchema = SchemaFactory.createForClass(Todo);
+export const TodoSchema = SchemaFactory.createForClass(Todo)

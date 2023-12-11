@@ -1,47 +1,48 @@
-import {
-  Controller,
-  Post,
-  Body,
-  ValidationPipe,
-  Put,
-  Get,
-  Delete,
-  Param,
-} from '@nestjs/common';
+import { Controller } from '@nestjs/common'
 
-import { TodoService } from './todo.service';
-import { CreateTodoDto } from './dtos/create-todo.dto';
-import { UpdateTodoDto } from './dtos/update-todo.dto';
+import { TodoService } from './todo.service'
+// import { CreateTodoDto } from './dtos/create-todo.dto'
+// import { UpdateTodoDto } from './dtos/update-todo.dto'
+import { MessagePattern } from '@nestjs/microservices'
 
 @Controller('todo')
 export class TodoController {
   constructor(private todoService: TodoService) {}
 
-  @Post()
-  async create(@Body(new ValidationPipe()) createTodo: CreateTodoDto) {
-    return this.todoService.create(createTodo);
+  @MessagePattern('get-todo')
+  getTodos(data: any) {
+    console.log(data)
+    return {
+      status: true,
+      message: `DESDE TODO. SEGUNDOS: ${new Date().getSeconds()}`,
+    }
   }
 
-  @Put(':id')
-  async update(
-    @Param('id') id: string,
-    @Body(new ValidationPipe()) updateTodo: UpdateTodoDto,
-  ) {
-    return this.todoService.update(id, updateTodo);
-  }
+  // @Post()
+  // async create(@Body(new ValidationPipe()) createTodo: CreateTodoDto) {
+  //   return this.todoService.create(createTodo);
+  // }
 
-  @Get()
-  async findAll() {
-    return this.todoService.findAll();
-  }
+  // @Put(':id')
+  // async update(
+  //   @Param('id') id: string,
+  //   @Body(new ValidationPipe()) updateTodo: UpdateTodoDto,
+  // ) {
+  //   return this.todoService.update(id, updateTodo);
+  // }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return this.todoService.findOne(id);
-  }
+  // @Get()
+  // async findAll() {
+  //   return this.todoService.findAll();
+  // }
 
-  @Delete(':id')
-  async delete(@Param('id') id: string) {
-    return this.todoService.delete(id);
-  }
+  // @Get(':id')
+  // async findOne(@Param('id') id: string) {
+  //   return this.todoService.findOne(id);
+  // }
+
+  // @Delete(':id')
+  // async delete(@Param('id') id: string) {
+  //   return this.todoService.delete(id);
+  // }
 }
